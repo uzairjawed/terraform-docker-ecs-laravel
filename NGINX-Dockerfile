@@ -1,0 +1,19 @@
+FROM ubuntu:16.04
+
+MAINTAINER Uzair Jawed
+
+# Setup Nginx and put its daemon off.
+run apt-get update && apt-get install -y nginx \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+	&& echo "daemon off;" >> /etc/nginx/nginx.conf
+
+# This is our default conf file for nginx
+ADD default /etc/nginx/sites-available/default
+
+# We will just expose index.php file in this container.
+COPY application/public/ /var/www/html/public
+
+EXPOSE 80
+
+CMD ["nginx"]
