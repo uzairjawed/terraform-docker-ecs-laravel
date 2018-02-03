@@ -1,0 +1,26 @@
+[
+    {
+      "cpu": 200,
+      "memory": 300,
+      "image": "${php_image_url}",
+      "essential": true,
+      "name": "php"
+    },
+    {
+      "portMappings": [
+        {
+          "hostPort": ${host_port},
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "cpu": 300,
+      "memory": 300,
+      "image": "${nginx_image_url}",
+      "essential": false,
+      "links": [
+        "php:php"
+      ],
+      "name": "nginx"
+    }
+]
