@@ -1,7 +1,7 @@
 # Compiled files
 *.tfstate
 *.tfstate.backup
-
+*.tfstate.lock.info
 # plugin directory
 .terraform/
 
